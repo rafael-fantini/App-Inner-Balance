@@ -1,0 +1,11 @@
+# Exemplo de configuração do Android SDK
+# Copie este arquivo para local.properties e ajuste o caminho
+
+# Windows (substitua [SEU_USUARIO] pelo seu nome de usuário)
+sdk.dir=C:\\Users\\[SEU_USUARIO]\\AppData\\Local\\Android\\Sdk
+
+# macOS
+# sdk.dir=/Users/[SEU_USUARIO]/Library/Android/sdk
+
+# Linux
+# sdk.dir=/home/[SEU_USUARIO]/Android/Sdk
