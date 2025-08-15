@@ -1,3 +1,15 @@
 {
-  "/auth/login/page": "app/auth/login/page.js"
+  "/_not-found": "app/_not-found.js",
+  "/achievements/page": "app/achievements/page.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/categories/page": "app/categories/page.js",
+  "/community/page": "app/community/page.js",
+  "/forum/page": "app/forum/page.js",
+  "/goals/page": "app/goals/page.js",
+  "/health/page": "app/health/page.js",
+  "/onboarding/page": "app/onboarding/page.js",
+  "/page": "app/page.js",
+  "/sos/page": "app/sos/page.js",
+  "/therapist/page": "app/therapist/page.js",
+  "/tracker/page": "app/tracker/page.js"
 }

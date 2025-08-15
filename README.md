@@ -210,3 +210,33 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 ---
 
 **"O caminho da recuperação é uma jornada de mil milhas que começa com um único passo. Este aplicativo está aqui para acompanhar cada passo dessa jornada."**
+
+## 📦 Build Android (Capacitor)
+
+```bash
+# 1) Build da web (Next.js)
+npm run build
+
+# 2) Inicializar/atualizar projeto Android (uma vez)
+npm run android:init   # cria a pasta android/
+
+# 3) Sincronizar assets web para Android
+npm run android:sync
+
+# 4) Abrir no Android Studio (opcional)
+npm run android:open
+
+# 5) Gerar AAB de release (requer SDK instalado)
+cd android
+# Configure o SDK: crie local.properties com o caminho do SDK
+# sdk.dir=/home/SEU_USUARIO/Android/Sdk
+./gradlew bundleRelease
+```
+
+### Requisitos locais/CI
+- Android SDK instalado (API 35), Java 17
+- Arquivo `android/local.properties` com `sdk.dir=...`
+- Keystore configurada no Android Studio para assinar release
+
+### Permissões
+- `INTERNET`, `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`
