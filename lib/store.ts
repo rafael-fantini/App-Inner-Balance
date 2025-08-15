@@ -36,6 +36,35 @@ export interface HealthData {
   exercise?: number
 }
 
+export interface Video {
+  id: string
+  title: string
+  description: string
+  videoUrl: string
+  thumbnailUrl?: string
+  duration?: number
+  uploadedBy: 'gedalias' | 'patient'
+  authorName: string
+  uploadDate: Date
+  views: number
+  likes: number
+  tags: string[]
+}
+
+export interface Class {
+  id: string
+  title: string
+  description: string
+  topic: string
+  videoUrl: string
+  thumbnailUrl?: string
+  duration: number
+  uploadDate: Date
+  views: number
+  difficulty: 'beginner' | 'intermediate' | 'advanced'
+  materials?: string[]
+}
+
 interface AppState {
   // User
   user: User | null
@@ -50,6 +79,12 @@ interface AppState {
   
   // Health
   healthData: HealthData[]
+  
+  // Videos
+  videos: Video[]
+  
+  // Classes
+  classes: Class[]
   
   // Actions
   setUser: (user: User) => void
