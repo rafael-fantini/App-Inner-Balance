@@ -96,6 +96,15 @@ interface AppState {
   deleteGoal: (id: string) => void
   addHealthData: (data: HealthData) => void
   updateHealthData: (date: string, data: Partial<HealthData>) => void
+  addVideo: (video: Video) => void
+  updateVideo: (id: string, updates: Partial<Video>) => void
+  deleteVideo: (id: string) => void
+  likeVideo: (id: string) => void
+  addView: (videoId: string) => void
+  addClass: (classItem: Class) => void
+  updateClass: (id: string, updates: Partial<Class>) => void
+  deleteClass: (id: string) => void
+  addClassView: (classId: string) => void
 }
 
 export const useAppStore = create<AppState>()(
@@ -108,6 +117,8 @@ export const useAppStore = create<AppState>()(
       sobrietyData: null,
       goals: [],
       healthData: [],
+      videos: [],
+      classes: [],
 
       // Actions
       setUser: (user) => set({ user, isAuthenticated: true }),
@@ -148,11 +159,57 @@ export const useAppStore = create<AppState>()(
         return { healthData: [...state.healthData, data] };
       }),
       
-      updateHealthData: (date, data) => set((state) => ({
-        healthData: state.healthData.map(item => 
-          item.date === date ? { ...item, ...data } : item
-        )
-      })),
+              updateHealthData: (date, data) => set((state) => ({
+          healthData: state.healthData.map(item => 
+            item.date === date ? { ...item, ...data } : item
+          )
+        })),
+        
+        addVideo: (video) => set((state) => ({ 
+          videos: [...state.videos, video] 
+        })),
+        
+        updateVideo: (id, updates) => set((state) => ({
+          videos: state.videos.map(video => 
+            video.id === id ? { ...video, ...updates } : video
+          )
+        })),
+        
+        deleteVideo: (id) => set((state) => ({
+          videos: state.videos.filter(video => video.id !== id)
+        })),
+        
+        likeVideo: (id) => set((state) => ({
+          videos: state.videos.map(video => 
+            video.id === id ? { ...video, likes: video.likes + 1 } : video
+          )
+        })),
+        
+        addView: (videoId) => set((state) => ({
+          videos: state.videos.map(video => 
+            video.id === videoId ? { ...video, views: video.views + 1 } : video
+          )
+        })),
+        
+        addClass: (classItem) => set((state) => ({ 
+          classes: [...state.classes, classItem] 
+        })),
+        
+        updateClass: (id, updates) => set((state) => ({
+          classes: state.classes.map(classItem => 
+            classItem.id === id ? { ...classItem, ...updates } : classItem
+          )
+        })),
+        
+        deleteClass: (id) => set((state) => ({
+          classes: state.classes.filter(classItem => classItem.id !== id)
+        })),
+        
+        addClassView: (classId) => set((state) => ({
+          classes: state.classes.map(classItem => 
+            classItem.id === classId ? { ...classItem, views: classItem.views + 1 } : classItem
+          )
+        })),
     }),
     {
       name: 'recovery-app-storage',
@@ -163,6 +220,8 @@ export const useAppStore = create<AppState>()(
         sobrietyData: state.sobrietyData,
         goals: state.goals,
         healthData: state.healthData,
+        videos: state.videos,
+        classes: state.classes,
       }),
     }
   )
