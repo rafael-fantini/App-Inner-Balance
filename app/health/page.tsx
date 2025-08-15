@@ -200,7 +200,7 @@ export default function HealthPage() {
           ) : (
             <Button
               onClick={isTracking ? stopTracking : startTracking}
-              variant={isTracking ? "outline" : "default"}
+              variant={isTracking ? "outline" : "primary"}
               className="inline-flex items-center gap-2"
             >
               {isTracking ? (

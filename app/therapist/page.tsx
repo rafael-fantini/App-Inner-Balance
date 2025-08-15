@@ -296,7 +296,9 @@ export default function TherapistPage() {
                   onClick={sendMessage}
                   disabled={!newMessage.trim()}
                   className="rounded-full px-4"
-                />
+                >
+                  Enviar
+                </Button>
               </div>
             </div>
           </Card>

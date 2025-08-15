@@ -117,18 +117,20 @@ export default function AchievementsPage() {
         <Card className="p-6 bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-200">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-yellow-600">{progress.daysSober}</div>
+              <div className="text-3xl font-bold text-yellow-600">
+                {typeof progress === 'object' ? progress.daysSober : 0}
+              </div>
               <div className="text-sm text-gray-600">Dias Limpo</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-orange-600">
-                {progress.unlockedCount}/{progress.totalCount}
+                {typeof progress === 'object' ? `${progress.unlockedCount}/${progress.totalCount}` : '0/6'}
               </div>
               <div className="text-sm text-gray-600">Conquistas Desbloqueadas</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-red-600">
-                {Math.round((progress.unlockedCount / progress.totalCount) * 100)}%
+                {typeof progress === 'object' ? Math.round((progress.unlockedCount / progress.totalCount) * 100) : 0}%
               </div>
               <div className="text-sm text-gray-600">Progresso Total</div>
             </div>

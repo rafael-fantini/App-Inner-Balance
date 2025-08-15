@@ -18,7 +18,8 @@ import {
   Settings,
   LogOut,
   Heart,
-  Award
+  Award,
+  Activity
 } from 'lucide-react'
 import { useAppStore } from '@/lib/store'
 import { toast } from 'react-toastify'

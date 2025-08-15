@@ -434,7 +434,9 @@ export default function CommunityPage() {
                         onClick={sendMessage}
                         disabled={!newMessage.trim()}
                         className="rounded-full"
-                      />
+                      >
+                        Enviar
+                      </Button>
                     </div>
                   </div>
                   
