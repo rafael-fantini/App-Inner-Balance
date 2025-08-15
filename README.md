@@ -92,7 +92,7 @@ Um aplicativo moderno e inovador para auxiliar dependentes químicos em sua jorn
 ### Instalação e Execução
 ```bash
 # Clone o repositório
-git clone [repository-url]
+git clone https://github.com/rafael-fantini/App-Inner-Balance.git
 cd o-caminho-da-recuperacao
 
 # Instale as dependências
