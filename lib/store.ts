@@ -65,6 +65,30 @@ export interface Class {
   materials?: string[]
 }
 
+export interface Achievement {
+  id: string
+  name: string
+  description: string
+  days: number
+  iconUrl: string
+  color: string
+  unlockedAt?: Date
+  isUnlocked: boolean
+}
+
+export interface AchievementNotification {
+  id: string
+  userId: string
+  userName: string
+  achievement: Achievement
+  timestamp: Date
+  reactions: {
+    userId: string
+    type: 'heart' | 'thumbs_up' | 'clap' | 'fire' | 'trophy'
+    timestamp: Date
+  }[]
+}
+
 interface AppState {
   // User
   user: User | null
@@ -86,6 +110,10 @@ interface AppState {
   // Classes
   classes: Class[]
   
+  // Achievements
+  achievements: Achievement[]
+  achievementNotifications: AchievementNotification[]
+  
   // Actions
   setUser: (user: User) => void
   logout: () => void
@@ -105,6 +133,9 @@ interface AppState {
   updateClass: (id: string, updates: Partial<Class>) => void
   deleteClass: (id: string) => void
   addClassView: (classId: string) => void
+  unlockAchievement: (achievementId: string) => void
+  addAchievementNotification: (notification: AchievementNotification) => void
+  addReactionToAchievement: (notificationId: string, reaction: { userId: string, type: 'heart' | 'thumbs_up' | 'clap' | 'fire' | 'trophy' }) => void
 }
 
 export const useAppStore = create<AppState>()(
@@ -119,6 +150,63 @@ export const useAppStore = create<AppState>()(
       healthData: [],
       videos: [],
       classes: [],
+      achievements: [
+        {
+          id: 'day-1',
+          name: 'Primeiro Dia Limpo',
+          description: 'Parabéns! Você completou seu primeiro dia de sobriedade.',
+          days: 1,
+          iconUrl: '/achievements/day-1.svg',
+          color: '#10b981',
+          isUnlocked: false
+        },
+        {
+          id: 'month-1',
+          name: '30 Dias - 1 Mês Limpo',
+          description: 'Um mês inteiro de sobriedade! Você é incrível!',
+          days: 30,
+          iconUrl: '/achievements/month-1.svg',
+          color: '#3b82f6',
+          isUnlocked: false
+        },
+        {
+          id: 'month-2',
+          name: '60 Dias - 2 Meses Limpos',
+          description: 'Dois meses de força e determinação.',
+          days: 60,
+          iconUrl: '/achievements/month-2.svg',
+          color: '#8b5cf6',
+          isUnlocked: false
+        },
+        {
+          id: 'month-3',
+          name: '90 Dias - 3 Meses Limpos',
+          description: 'Três meses! Você está construindo uma nova vida.',
+          days: 90,
+          iconUrl: '/achievements/month-3.svg',
+          color: '#f59e0b',
+          isUnlocked: false
+        },
+        {
+          id: 'month-6',
+          name: '180 Dias - 6 Meses Limpos',
+          description: 'Meio ano de sobriedade! Sua transformação é inspiradora.',
+          days: 180,
+          iconUrl: '/achievements/month-6.svg',
+          color: '#ef4444',
+          isUnlocked: false
+        },
+        {
+          id: 'year-1',
+          name: '365 Dias - 1 Ano Limpo',
+          description: 'Um ano inteiro! Você é um verdadeiro guerreiro da recuperação.',
+          days: 365,
+          iconUrl: '/achievements/year-1.svg',
+          color: '#dc2626',
+          isUnlocked: false
+        }
+      ],
+      achievementNotifications: [],
 
       // Actions
       setUser: (user) => set({ user, isAuthenticated: true }),
@@ -210,6 +298,32 @@ export const useAppStore = create<AppState>()(
             classItem.id === classId ? { ...classItem, views: classItem.views + 1 } : classItem
           )
         })),
+        
+        unlockAchievement: (achievementId) => set((state) => ({
+          achievements: state.achievements.map(achievement => 
+            achievement.id === achievementId 
+              ? { ...achievement, isUnlocked: true, unlockedAt: new Date() }
+              : achievement
+          )
+        })),
+        
+        addAchievementNotification: (notification) => set((state) => ({
+          achievementNotifications: [notification, ...state.achievementNotifications]
+        })),
+        
+        addReactionToAchievement: (notificationId, reaction) => set((state) => ({
+          achievementNotifications: state.achievementNotifications.map(notification =>
+            notification.id === notificationId
+              ? {
+                  ...notification,
+                  reactions: [
+                    ...notification.reactions.filter(r => r.userId !== reaction.userId),
+                    { ...reaction, timestamp: new Date() }
+                  ]
+                }
+              : notification
+          )
+        })),
     }),
     {
       name: 'recovery-app-storage',
@@ -222,6 +336,8 @@ export const useAppStore = create<AppState>()(
         healthData: state.healthData,
         videos: state.videos,
         classes: state.classes,
+        achievements: state.achievements,
+        achievementNotifications: state.achievementNotifications,
       }),
     }
   )

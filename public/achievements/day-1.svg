@@ -1,0 +1,32 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Medalha circular externa -->
+  <circle cx="50" cy="50" r="45" fill="url(#greenGrad)" stroke="#047857" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- Círculo interno -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Número 1 central -->
+  <text x="50" y="60" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+  
+  <!-- Texto "DIA" -->
+  <text x="50" y="75" font-family="Arial, sans-serif" font-size="8" font-weight="bold" text-anchor="middle" fill="#ffffff">DIA</text>
+  
+  <!-- Estrelas decorativas -->
+  <polygon points="50,15 52,21 58,21 53,25 55,31 50,27 45,31 47,25 42,21 48,21" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Texto na borda -->
+  <path id="circle-text" d="M 15,50 A 35,35 0 1,1 85,50 A 35,35 0 1,1 15,50" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="6" fill="#ffffff" font-weight="bold">
+    <textPath href="#circle-text" startOffset="25%">• PRIMEIRO DIA LIMPO •</textPath>
+  </text>
+</svg>

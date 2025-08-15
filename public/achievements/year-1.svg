@@ -1,0 +1,51 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="goldRadial" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Medalha circular externa com brilho -->
+  <circle cx="50" cy="50" r="47" fill="url(#goldGrad)" stroke="#b45309" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="50" cy="50" r="45" fill="url(#goldRadial)" opacity="0.8"/>
+  
+  <!-- Estrela de 8 pontas -->
+  <polygon points="50,10 54,18 62,18 56,24 58,32 50,28 42,32 44,24 38,18 46,18" fill="#ffffff" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Círculo interno ornamentado -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.8"/>
+  <circle cx="50" cy="50" r="25" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Número 365 central -->
+  <text x="50" y="52" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#ffffff" filter="url(#glow)">365</text>
+  
+  <!-- Texto "DIAS" -->
+  <text x="50" y="65" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#ffffff">DIAS</text>
+  
+  <!-- Laurel wreath -->
+  <path d="M 30,75 Q 35,70 40,75 Q 45,80 50,75 Q 55,80 60,75 Q 65,70 70,75" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  <path d="M 30,78 Q 35,73 40,78 Q 45,83 50,78 Q 55,83 60,78 Q 65,73 70,78" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Texto na borda -->
+  <path id="circle-text-365" d="M 15,50 A 35,35 0 1,1 85,50 A 35,35 0 1,1 15,50" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="4" fill="#ffffff" font-weight="bold">
+    <textPath href="#circle-text-365" startOffset="8%">• GUERREIRO DA RECUPERAÇÃO - UM ANO •</textPath>
+  </text>
+</svg>

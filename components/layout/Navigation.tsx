@@ -17,7 +17,8 @@ import {
   User,
   Settings,
   LogOut,
-  Heart
+  Heart,
+  Award
 } from 'lucide-react'
 import { useAppStore } from '@/lib/store'
 import { toast } from 'react-toastify'
@@ -26,6 +27,7 @@ const navItems = [
   { href: '/', label: 'Dashboard', icon: Home },
   { href: '/tracker', label: 'Progresso', icon: BarChart3 },
   { href: '/goals', label: 'Metas', icon: Target },
+  { href: '/achievements', label: 'Conquistas', icon: Award },
   { href: '/health', label: 'Saúde', icon: Activity },
   { href: '/sos', label: 'SOS', icon: AlertTriangle },
   { href: '/categories', label: 'Categorias', icon: MessageSquare },

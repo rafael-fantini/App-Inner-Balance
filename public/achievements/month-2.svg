@@ -1,0 +1,35 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Medalha circular externa -->
+  <circle cx="50" cy="50" r="45" fill="url(#purpleGrad)" stroke="#6d28d9" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- Círculo interno ornamentado -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+  <circle cx="50" cy="50" r="25" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Número 60 central -->
+  <text x="50" y="55" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">60</text>
+  
+  <!-- Texto "DIAS" -->
+  <text x="50" y="70" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#ffffff">DIAS</text>
+  
+  <!-- Duas estrelas simbolizando 2 meses -->
+  <polygon points="40,20 42,26 48,26 43,30 45,36 40,32 35,36 37,30 32,26 38,26" fill="#ffffff" opacity="0.8"/>
+  <polygon points="60,20 62,26 68,26 63,30 65,36 60,32 55,36 57,30 52,26 58,26" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Texto na borda -->
+  <path id="circle-text-60" d="M 15,50 A 35,35 0 1,1 85,50 A 35,35 0 1,1 15,50" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="5.5" fill="#ffffff" font-weight="bold">
+    <textPath href="#circle-text-60" startOffset="18%">• DOIS MESES DE FORÇA •</textPath>
+  </text>
+</svg>
